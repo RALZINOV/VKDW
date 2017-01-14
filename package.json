@@ -1,0 +1,31 @@
+{
+  "name": "vkdw",
+  "version": "",
+  "description": "Adds download and mark audio button at VK.com site",
+  "main": "src/manifest.json",
+  "scripts": {
+    "dev": "set NODE_ENV=development&& webpack",
+    "build": "./node_modules/.bin/gulp build-package"
+  },
+  "author": "Jason Ford",
+  "dependencies": {
+    "babel-core": "6.21.0",
+    "babel-eslint": "7.1.1",
+    "babel-loader": "6.2.10",
+    "babel-preset-es2015": "6.18.0",
+    "babel-preset-react": "6.16.0",
+    "del": "2.2.2",
+    "eslint-plugin-react": "6.8.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-clean-css": "2.3.2",
+    "gulp-debug": "3.0.0",
+    "gulp-json-editor": "2.2.1",
+    "gulp-rename": "1.2.2",
+    "gulp-uglify": "2.0.0",
+    "gulp-zip": "3.2.0",
+    "react": "15.4.1",
+    "react-dom": "15.4.1",
+    "webpack": "2.2.0-rc.3",
+    "webpack-stream": "3.2.0"
+  }
+}

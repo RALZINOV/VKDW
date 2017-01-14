@@ -1,0 +1,210 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 450px;
+    min-height: 400px;
+    max-height: 400px;
+    margin: 0;
+}
+
+header,
+footer {
+    padding: 0 5px;
+}
+
+header {
+ display: flex;
+ align-items: center;
+ background: #507299;
+ height: 30px;
+}
+
+.app {
+    display: flex;
+    flex: 1;
+}
+
+.app-wrap {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.header__logo {
+    width: 20px;
+    margin: 0 5px;
+}
+
+.header__title {
+    color: #fff;
+    margin-left: 5px;
+    font-weight: 500;
+}
+
+.container {
+    flex: 1;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    height: 2em;
+    background: #f0f2f5;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    padding: 8px 5px;
+    cursor: pointer;
+}
+
+.item:hover {
+    background-color: #f0f2f5;
+}
+
+.item__size {
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+
+}
+
+.item__size-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    margin: 0 5px;
+}
+
+.item__size-info > p {
+    margin: 0;
+}
+
+.item__size > p {
+    margin: 0;
+    white-space: nowrap;
+    width: 4em;
+    text-align: right;
+}
+
+.item__status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 20px;
+    background: #507299;
+    margin-right: 10px;
+    margin-left: 5px;
+    background-repeat: no-repeat;
+}
+
+.item__status:before {
+    content: '';
+    width: 15px;
+    height: 15px;
+}
+
+.item__status--interrupted {
+    background-color: #e22a2a;
+}
+
+.item__status--interrupted:before {
+    background-image: url('../img/actions.png');
+    background-position: 0 -31px;
+}
+
+.item__status--complete {
+    background-color: #507299;
+}
+
+.item__status--complete:before {
+    background-image: url('../img/actions.png');
+    background-position: 0 0;
+}
+
+.item__status--paused {
+    background-color: #507299;
+}
+
+.item__status--paused:before {
+    background-image: url('../img/actions.png');
+    background-position: 0 -45px;
+}
+
+.item__title {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    font-family: Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.item__title-artist {
+    font-weight: 500;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 30em;
+    color: #2a5885;
+    margin: 0;
+}
+
+.item__title-divider {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.item__title-trackname {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 16em;
+    margin: 0;
+}
+
+.item__progress-bar {
+    display: flex;
+    background: #dae0e8;
+    height: 4px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.item__progress-bar > div {
+    background: #507299;
+    border-radius: 4px;
+    max-width: 100%;
+}
+
+.item__actions {
+    display: flex;
+    margin-left: auto;
+}
+
+.item__actions > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    margin: 5px;
+}
+
+.item__actions--delete {
+    background-image: url('../img/actions.png');
+    background-position: 0 -15px;
+    background-color: transparent;
+}

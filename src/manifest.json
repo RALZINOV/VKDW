@@ -1,0 +1,41 @@
+{
+  "manifest_version": 2,
+  "name": "Скачать музыку Вконтакте VKDW Mini",
+  "short_name": "VKDW Mini",
+  "description": "Добавляет возможность скачивания аудиозаписей в VK. Поддерживается скачивание альбомов и списков треков",
+  "version": "1.7",
+  "icons": {
+    "128": "img/128.png"
+  },
+  "background": {
+    "scripts": [
+      "workers/bgWorker.js"
+    ]
+  },
+  "browser_action": {},
+  "externally_connectable": {
+    "matches": [
+      "*://vk.com/*"
+    ]
+  },
+  "content_scripts": [{
+    "matches": [
+      "*://vk.com/*"
+    ],
+    "js": [
+      "injector.js"
+    ]
+  }],
+  "web_accessible_resources": [
+    "workers/pageWorker.js",
+    "styles/page.css",
+    "img/download_button.png",
+    "img/album_download_button.png",
+    "img/mark_button.png",
+    "img/modal_logo.png"
+  ],
+  "permissions": [
+    "downloads",
+    "*://vk.com/*"
+  ]
+}

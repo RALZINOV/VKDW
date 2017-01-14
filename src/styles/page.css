@@ -1,0 +1,232 @@
+﻿@charset "utf-8";
+@keyframes click {
+    from {margin: 6px 6px 4px 6px;}
+    to {margin: 5px 6px;}
+}
+ 
+.vkdw-download-button {
+    background: url('../img/download_button.png');
+}
+
+.vkdw-mark-button {
+    background: url('../img/mark_button.png');
+    display: none;
+ 
+}
+
+.vkdw-download-button,
+.vkdw-mark-button {
+    position: relative;
+    height:13px;
+    width:13px;
+    margin: 5px 6px;
+    float:left;
+    opacity: 0.75;
+}
+
+.vkdw-download-button:hover,
+.vkdw-mark-button:hover {
+    opacity: 1;
+}
+
+.tooltipped:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -32px;
+    right: -93%;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 4px 7px 5px 7px;
+    z-index: 99999;
+    font-weight: 400;
+    border-radius: 3px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity:0;
+    transition: 0.4s ease opacity;
+}
+
+.tooltipped:after {
+    content: "";
+    position: absolute;
+    border: 5px solid;
+    border-color: rgba(0, 0, 0, 0.7) transparent transparent;
+    top: -10px;
+    left: 1px;
+    pointer-events: none;
+    opacity:0;
+    transition: 0.4s ease opacity;
+}
+
+.animated-hide {
+    transition: 0.4s ease opacity;
+}
+
+.animated-hide:after,
+.animated-hide:before {
+    opacity:0;
+    transition: 0.4s ease opacity;
+}
+
+.width-14px {
+    width: 14px;
+}
+
+.vkdw-marked {
+    transition: 0.2s ease background-color;
+    background-color: #e8edf4;
+    border-radius: 0;
+    position: relative;
+}
+
+.vkdw-marked .vkdw-mark-button {
+    background-position: -13px 0;
+}
+
+.vkdw-marked:before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    z-index: 99;
+    top: 0;
+    background-color: #6285AF;
+    right: 0;
+    opacity: 0;
+}
+
+.vkdw-marked .audio_info:before {
+    content: "";
+    position: absolute;
+    background: #D0D7E0;
+    height: 1px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.vkdw-marked:hover {
+    background-color: #e8edf4 !important;
+}
+ 
+.clicked {
+    animation-name: click;
+    animation-direction: alternate;
+    animation-duration: 0.4s;
+    animation-timing-function: ease;
+  
+}
+
+.animated {
+    transition: 0.2s ease opacity;
+}
+
+.animated:after,
+.animated:before {
+    opacity:1;
+    transition: 0.2s ease opacity;
+}
+
+.audio_row_current .vkdw-mark-button {
+  margin: 5px 7px 5px 5px;
+  display: block !important;
+  width: 14px;
+}
+
+.wall_audio_rows .vkdw-mark-button,
+.post_media .vkdw-mark-button {
+    margin-right: 7px;
+}
+
+.bg-overlay {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 998;
+}
+
+.dialog-overlay {
+    display: none;
+    position: absolute;
+    background-color: white;
+    max-width: 541px;
+    height: 140px;
+    z-index: 999;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    border: 1px solid #E6E7EB;
+    border-radius: 2px;
+}
+
+.blurred {
+    filter: blur(3px);
+}
+
+.bg-overlay-header {
+    height: 30px;
+    width: 100%;
+    background-color: #597DA3;
+    color: #FFFFFF;
+}
+
+.bg-overlay-header-title {
+    margin: 5px 0 0 10px;
+    float: left;
+    line-height: 1.6em;
+}
+
+.bg-overlay-header-logo {
+    width: 23px;
+    height: 14px;
+    margin-top: 8px;
+    margin-left: 10px;
+    float: left;
+    background: url('../img/modal_logo.png') no-repeat;
+    background-size: 100%;
+}
+
+.dialog-overlay p {
+    padding: 0 1em;
+    text-align: left;
+    color: #4B5B6B;
+    line-height: 1.6em;
+}
+
+.vkdw-submit {
+    margin-right: 12px;
+}
+
+.vkdw-submit-wrap {
+    position: absolute;
+    display: block;
+    bottom: 0;
+}
+
+.album-download-btn {
+    padding: 3px;
+    margin: 3px;
+    margin-top: 7px;
+    margin-right: 4px;
+    background: url('../img/album_download_button.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    transition: 0.1s ease opacity;
+}
+
+.audio_album_item:hover .album-download-btn {
+    opacity: 0.75;
+}
+
+.album-download-btn:hover {
+    opacity: 1 !important;
+}
+
+.claimed .vkdw-download-button,
+.claimed .vkdw-mark-button {
+    display: none;
+}
