@@ -3,6 +3,10 @@
     from {margin: 6px 6px 4px 6px;}
     to {margin: 5px 6px;}
 }
+
+body {
+    position: relative;
+}
  
 .vkdw-download-button {
     background: url('../img/download_button.png');
@@ -11,7 +15,6 @@
 .vkdw-mark-button {
     background: url('../img/mark_button.png');
     display: none;
- 
 }
 
 .vkdw-download-button,
@@ -144,68 +147,10 @@
     position: absolute;
     width: 100%;
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 998;
 }
-
-.dialog-overlay {
-    display: none;
-    position: absolute;
-    background-color: white;
-    max-width: 541px;
-    height: 140px;
-    z-index: 999;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    border: 1px solid #E6E7EB;
-    border-radius: 2px;
-}
-
-.blurred {
-    filter: blur(3px);
-}
-
-.bg-overlay-header {
-    height: 30px;
-    width: 100%;
-    background-color: #597DA3;
-    color: #FFFFFF;
-}
-
-.bg-overlay-header-title {
-    margin: 5px 0 0 10px;
-    float: left;
-    line-height: 1.6em;
-}
-
-.bg-overlay-header-logo {
-    width: 23px;
-    height: 14px;
-    margin-top: 8px;
-    margin-left: 10px;
-    float: left;
-    background: url('../img/modal_logo.png') no-repeat;
-    background-size: 100%;
-}
-
-.dialog-overlay p {
-    padding: 0 1em;
-    text-align: left;
-    color: #4B5B6B;
-    line-height: 1.6em;
-}
-
-.vkdw-submit {
-    margin-right: 12px;
-}
-
-.vkdw-submit-wrap {
-    position: absolute;
-    display: block;
-    bottom: 0;
-}
-
+ 
 .album-download-btn {
     padding: 3px;
     margin: 3px;
@@ -229,4 +174,87 @@
 .claimed .vkdw-download-button,
 .claimed .vkdw-mark-button {
     display: none;
+}
+
+.vkdw-overlay {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    z-index: 999;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.vkdw-modal {
+    position: fixed;
+    top: 30vh;
+    width: 450px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.vkdw-modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    height: 54px;
+    width: 100%;
+    background-color: #597DA3;
+    color: #fff;
+}
+
+.vkdw-modal__header-title {
+    font-family: -apple-system,BlinkMacSystemFont,Roboto,Open Sans,Helvetica Neue,sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: subpixel-antialiased;
+    font-size: 14px;
+    color: #fff;
+    height: 54px;
+    line-height: 54px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: 20px;
+}
+
+.vkdw-modal__body {
+    padding: 20px;
+    background: #fff;
+}
+
+.vkdw-modal__body > p {
+    margin: 0 0 1em 0;
+}
+
+.vkdw-modal__body > p:last-child {
+    margin: 0;
+}
+
+.vkdw-modal__controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 14px 23px 14px 25px;
+    height: 29px;
+    background-color: #fafbfc;
+    border-radius: 0 0 2px 2px;
+    border-top: 1px solid #e7e8ec;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.vkdw-modal__controls > button {
+    margin-left: 10px;
+}
+
+.vkdw-modal__cancel-button {
+    background-color: transparent !important;
+}
+
+.vkdw-modal__cancel-button:active {
+    background-color: #dae2ea !important;
 }

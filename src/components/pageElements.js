@@ -17,6 +17,7 @@ const {
   uncheckMarked,
   prepend,
   trackEndingsGenerator,
+  removeElement,
 } = utils;
 
 const {
@@ -149,8 +150,7 @@ export function markButton(locale) {
 }
 
 const hideModal = () => {
-  hide(findNodeWithClass('dialog-overlay'));
-  hide(findNodeWithClass('bg-overlay'));
+  removeElement('.vkdw-overlay');
 };
 
 const createElement = (nodeName, className, html, onclick) => {
@@ -169,17 +169,18 @@ const createElement = (nodeName, className, html, onclick) => {
 };
 
 export function confirmModal(counterText, locale, albumItemsIds) {
-  const closeModal = () => {
-    hideModal();
-    uncheckMarked();
+  const closeModal = (e) => {
+    if (e.target === e.currentTarget) {
+      hideModal();
+      uncheckMarked();
+    }
   };
 
-  const modal = createElement('div', 'vkdw-modal');
-  const bgOverlay = createElement('div', 'bg-overlay', null, closeModal);
-  const dialog = createElement('div', 'dialog-overlay');
-  const bgOverlayHeader = createElement('header', 'bg-overlay-header');
-  const bgOverlayHeaderLogo = createElement('header', 'bg-overlay-header-logo');
-  const bgOverlayHeaderTitle = createElement('div', 'bg-overlay-header-title', locale.downloadAlbumButtonCaption);
+  const modal = createElement('div', 'vkdw-overlay', null, closeModal);
+  const dialog = createElement('div', 'vkdw-modal');
+  const bgOverlayHeader = createElement('header', 'vkdw-modal__header');
+  const bgOverlayHeaderTitle = createElement('div', 'vkdw-modal__header-title', locale.downloadAlbumButtonCaption);
+  const closeButton = createElement('div', 'box_x_button', null, closeModal);
 
   const dialogText = `
       ${locale.youAboutToDownload} 
@@ -188,11 +189,12 @@ export function confirmModal(counterText, locale, albumItemsIds) {
       ${locale.areYouShure}
     `;
 
+  const dialogBody = createElement('div', 'vkdw-modal__body');
   const dialogParagraph = createElement('p', '', dialogText);
-  const dialogConfirmWrap = createElement('p', 'vkdw-submit-wrap');
+  const dialogConfirmWrap = createElement('p', 'vkdw-modal__controls');
   const dialogConfirmButton = createElement(
     'button',
-    'vkdw-submit flat_button',
+    'flat_button',
     locale.submitButtonLabel,
     () => {
       hideModal();
@@ -203,20 +205,20 @@ export function confirmModal(counterText, locale, albumItemsIds) {
 
   const dialogCancelButton = createElement(
     'button',
-    'vkdw-submit flat_button',
+    'flat_button secondary vkdw-modal__cancel-button',
     locale.cancelButtonLabel,
     closeModal);
 
-  modal.appendChild(bgOverlay);
-
-  bgOverlayHeader.appendChild(bgOverlayHeaderLogo);
   bgOverlayHeader.appendChild(bgOverlayHeaderTitle);
+  bgOverlayHeader.appendChild(closeButton);
 
   dialog.appendChild(bgOverlayHeader);
-  dialog.appendChild(dialogParagraph);
 
-  dialogConfirmWrap.appendChild(dialogConfirmButton);
+  dialogBody.appendChild(dialogParagraph);
+  dialog.appendChild(dialogBody);
+
   dialogConfirmWrap.appendChild(dialogCancelButton);
+  dialogConfirmWrap.appendChild(dialogConfirmButton);
 
   dialog.appendChild(dialogConfirmWrap);
 
@@ -229,13 +231,10 @@ function showModal(tracksIds, locale) {
   if (!findNodeWithClass('vkdw-modal')) {
     const counterText = `${tracksIds.length} ${trackEndingsGenerator(tracksIds.length, locale)}`;
     const modal = confirmModal(counterText, locale, tracksIds);
-    const audioRowsContainer = findNodeWithClass('audio_rows_header');
+    const audioRowsContainer = document.body;
 
     prepend(audioRowsContainer, modal);
   }
-
-  show(findNodeWithClass('bg-overlay'));
-  show(findNodeWithClass('dialog-overlay'));
 }
 
 function downloadAlbum(ownerId, albumId, albumTitle, locale) {

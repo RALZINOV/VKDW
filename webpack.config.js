@@ -41,8 +41,8 @@ module.exports = {
       // },
     }),
 
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: !IS_DEV,
-    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   minimize: !IS_DEV,
+    // }),
   ],
 };

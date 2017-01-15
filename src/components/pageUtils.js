@@ -205,43 +205,8 @@ export function audioListChanged() {
   );
 }
 
-
-
-
-/* Unused functions:
-
-export function addHoverEvents(element, onMouseEnter, onMouseLeave) {
-
-  element.addEventListener('mouseenter', () => {
-    window.clearTimeout(currBtnTimeout);
-
-    addClassName(element, 'tooltipped');
-
-    setTimeout(() => {
-      addClassName(element, 'animated');
-    }, 100);
-
-    if (onMouseEnter) {
-      onMouseEnter();
-    }
-
-  });
-
-  element.addEventListener('mouseleave', () => {
-    removeClassName(element, 'animated');
-    removeClassName(element, 'clicked');
-
-    setTimeout(() => {
-      removeClassName(element, 'tooltipped');
-    }, 100);
-
-    if (onMouseLeave) {
-      currBtnTimeout = setTimeout(() => {
-        onMouseLeave();
-      }, 600);
-    }
-  });
+export function removeElement(element) {
+  const item = document.querySelectorAll(element)[0];
+  item.parentNode.removeChild(item);
 }
-
-*/
 
