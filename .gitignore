@@ -1,6 +1,7 @@
-img
-node_modules
-build-tmp
-packages
-.idea
+/img/
+/src/workers
+/node_modules
+/build-tmp
+/packages
+/.idea
 *.zip
