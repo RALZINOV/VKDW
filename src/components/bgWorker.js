@@ -1,99 +1,6 @@
 /* global chrome */
 import LOCALE from './locale';
 
-const data = [
-  {
-    id: 1,
-    artist: 'Motley Crue',
-    trackName: 'Goin\' Out Swingin\'',
-  },
-  {
-    id: 1,
-    artist: 'Amon Amarth',
-    trackName: 'A Beast Am I',
-  },
-  {
-    id: 1,
-    artist: 'Amon Amarth',
-    trackName: 'Across The Rainbow Bridge',
-  },
-  {
-    id: 1,
-    artist: 'Amon Amarth',
-    trackName: 'Aerials [System Of A Down Cover] [Bonus Track]',
-  },
-  {
-    id: 1,
-    artist: 'Amon Amarth',
-    trackName: 'Amon Amarth',
-  },
-  {
-    id: 1,
-    artist: 'Amon Amarth',
-    trackName: 'An Ancient Sign Of Coming Storm',
-  },
-  {
-    id: 1,
-    artist: 'Motley Crue',
-    trackName: 'Goin\' Out Swingin\'',
-  },
-  {
-    id: 1,
-    artist: 'Amon Amarth',
-    trackName: 'A Beast Am I',
-  },
-  {
-    id: 1,
-    artist: 'Amon Amarth',
-    trackName: 'Across The Rainbow Bridge',
-  },
-  {
-    id: 1,
-    artist: 'Amon Amarth',
-    trackName: 'Aerials [System Of A Down Cover] [Bonus Track]',
-  },
-  {
-    id: 1,
-    artist: 'Amon Amarth',
-    trackName: 'Amon Amarth',
-  },
-  {
-    id: 1,
-    artist: 'Amon Amarth',
-    trackName: 'An Ancient Sign Of Coming Storm',
-  },
-  {
-    id: 1,
-    artist: 'Motley Crue',
-    trackName: 'Goin\' Out Swingin\'',
-  },
-  {
-    id: 1,
-    artist: 'Amon Amarth',
-    trackName: 'A Beast Am I',
-  },
-  {
-    id: 1,
-    artist: 'Amon Amarth',
-    trackName: 'Across The Rainbow Bridge',
-  },
-  {
-    id: 1,
-    artist: 'Amon Amarth',
-    trackName: 'Aerials [System Of A Down Cover] [Bonus Track]',
-  },
-  {
-    id: 1,
-    artist: 'Amon Amarth',
-    trackName: 'Amon Amarth',
-  },
-  {
-    id: 1,
-    artist: 'Amon Amarth',
-    trackName: 'An Ancient Sign Of Coming Storm',
-  },
-];
-
 function stringDecoder(encodedString) {
   stringDecoder.decodeBox.innerHTML = encodedString;
   const decoded = stringDecoder.decodeBox.value;
@@ -112,6 +19,8 @@ function handleDownloadMessage(request, sendResponse) {
   const path = request.albumName ? `${request.albumName}/` : '';
   const folderName = `VKDW_${currentDate}/${path}`;
 
+  chrome.downloads.setShelfEnabled(false);
+
   chrome.downloads.download({
     url: request.rawSongUrl,
     filename: folderName + stringDecoder(request.songFileName),
@@ -120,6 +29,7 @@ function handleDownloadMessage(request, sendResponse) {
 
     if (downloadId === undefined) {
       console.error(`Error: Cannot download. Status: ${chrome.runtime.lastError}`);
+        chrome.downloads.setShelfEnabled(true);
 
     } else {
       console.info(`Start download ${downloadId}`);

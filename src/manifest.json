@@ -29,13 +29,14 @@
   "web_accessible_resources": [
     "workers/pageWorker.js",
     "styles/page.css",
+    "img/page-worker-buttons.png",
     "img/download_button.png",
     "img/album_download_button.png",
-    "img/mark_button.png",
-    "img/modal_logo.png"
+    "img/mark_button.png"
   ],
   "permissions": [
     "downloads",
+    "downloads.shelf",
     "*://vk.com/*"
   ]
 }

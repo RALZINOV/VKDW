@@ -184,7 +184,7 @@ export function confirmModal(counterText, locale, albumItemsIds) {
 
   const dialogText = `
       ${locale.youAboutToDownload} 
-      <span class="vkdw-tracks-number">${counterText || locale.aLotOfTracks}</span>, 
+      <b>${counterText || locale.aLotOfTracks}</b>, 
       ${locale.thisCanTakeSomeTime}.<br>
       ${locale.areYouShure}
     `;

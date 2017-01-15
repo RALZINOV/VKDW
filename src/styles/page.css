@@ -9,11 +9,15 @@ body {
 }
  
 .vkdw-download-button {
-    background: url('../img/download_button.png');
+    background: url(../img/page-worker-buttons.png);
+    background-repeat: no-repeat;
+    background-position: 0px -13px;
 }
 
 .vkdw-mark-button {
-    background: url('../img/mark_button.png');
+    background: url(../img/page-worker-buttons.png);
+    background-repeat: no-repeat;
+    background-position: 0px -26px;
     display: none;
 }
 
@@ -83,7 +87,7 @@ body {
 }
 
 .vkdw-marked .vkdw-mark-button {
-    background-position: -13px 0;
+    background-position: -13px -26px;
 }
 
 .vkdw-marked:before {
@@ -152,13 +156,12 @@ body {
 }
  
 .album-download-btn {
-    padding: 3px;
-    margin: 3px;
-    margin-top: 7px;
-    margin-right: 4px;
-    background: url('../img/album_download_button.png');
+    margin: 6px;
+    margin-top: 10px;
+    margin-right: 10px;
+    background: url(../img/page-worker-buttons.png);
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: 0px -13px;
     opacity: 0;
     transition: 0.1s ease opacity;
 }

@@ -5,7 +5,6 @@ const IS_DEV = process.env.NODE_ENV === 'development';
 const path = require('path');
 const webpack = require('webpack');
 
-
 module.exports = {
   entry: {
     pageWorker: './src/components/pageWorker.js',
@@ -21,14 +20,18 @@ module.exports = {
   watchOptions: {
     aggregateTimeout: 100,
   },
-  devtool: IS_DEV ? 'inline-module-source-map' : '',
+  devtool: IS_DEV ? 'module-inline-source-map' : '',
 
   module: {
     loaders: [
       {
+        loader: 'babel-loader',
         test: /\.jsx?/,
         include: path.resolve(__dirname, 'src/components/'),
-        loader: 'babel-loader',
+        query: {
+          plugins: ['transform-runtime'],
+          presets: ['es2015', 'stage-0', 'react'],
+        },
       },
     ],
   },

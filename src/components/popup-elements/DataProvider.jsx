@@ -1,6 +1,6 @@
 /* global chrome */
 import React from 'react';
-import downloadManager from './downloadManager';
+import downloadManager, { openDownloads, clearExtensionDownloads, eraseItem } from './downloadManager';
 
 class DataProvider extends React.Component {
   constructor() {
@@ -11,16 +11,28 @@ class DataProvider extends React.Component {
     };
   }
 
-  handleData(data) {
+  handleData = (data) => {
     this.setState({ data });
+  }
+
+  refreshList = () => {
+    downloadManager({ reason: 'update' }, this.handleData);
+  }
+
+  handleClearDownloads = () => {
+    clearExtensionDownloads(this.setState({ data: [] }));
+  }
+
+  handleEraseItemData = (id) => {
+    eraseItem(id, this.handleData);
   }
 
   componentWillMount() {
     chrome.downloads.onChanged.addListener((event) => {
-      downloadManager(event, this.handleData.bind(this));
+      downloadManager(event, this.handleData);
     });
 
-    downloadManager(null, this.handleData.bind(this));
+    downloadManager(null, this.handleData);
   }
 
   componentWillUnmount() {
@@ -28,13 +40,13 @@ class DataProvider extends React.Component {
   }
 
   render() {
-    const { data } = this.state;
-
-    const bgWorker = chrome.extension.connect({ name: 'popup' });
-
     const childProps = {
-      data,
-      bgWorker,
+      data: this.state.data,
+      refreshList: this.refreshList,
+      clearDownloads: this.handleClearDownloads,
+      openDownloads,
+      eraseItem: this.handleEraseItemData,
+
     };
 
     return React.cloneElement(this.props.children, childProps);
