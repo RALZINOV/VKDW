@@ -39,13 +39,13 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       IS_DEV,
-      // 'process.env': {
-      //   'NODE_ENV': JSON.stringify('production'),
-      // },
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+      },
     }),
 
-    // new webpack.optimize.UglifyJsPlugin({
-    //   minimize: !IS_DEV,
-    // }),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: !IS_DEV,
+    }),
   ],
 };

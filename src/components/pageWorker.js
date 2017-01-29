@@ -82,7 +82,7 @@ import { downloadButton, markButton, albumDownloadButton } from './pageElements'
 
       // Append album download buttons
       if (window.location.pathname.substr(1, 5) === 'audio') {
-        const albumButtons = document.querySelectorAll('.audio_albums_wrap .audio_album_btns');
+        const albumButtons = document.querySelectorAll('.audio_album_item .audio_album_btns');
 
         albumButtons.forEach((item) => {
           const vkdwButtons = item.getElementsByClassName('vkdw-download-button');
@@ -117,5 +117,5 @@ import { downloadButton, markButton, albumDownloadButton } from './pageElements'
       log(`Init error: ${e}`, 'error');
     });
   }());
-  
+
 })();

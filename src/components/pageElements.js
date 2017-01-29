@@ -273,11 +273,16 @@ export function albumDownloadButton(locale) {
       },
 
       click: (element) => () => {
+
         const albumIds = getNthParentNode(element, 3).href.match(/.+audios(\d+).+album_id=(\d+)/);
         const albumTitle = findNodeWithClass('audio_album_title', getNthParentNode(element, 2)).innerHTML;
-        const [, ownerId, albumId] = albumIds;
 
-        downloadAlbum(ownerId, albumId, albumTitle, locale);
+        if (albumIds && (albumIds.length > 0)) {
+          const [, ownerId, albumId] = albumIds;
+          downloadAlbum(ownerId, albumId, albumTitle, locale);
+        }
+
+        return null;
       },
     });
 }

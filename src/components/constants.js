@@ -13,6 +13,7 @@ export const AUDIO_ROWS_CLASSNAMES = [
 
   // Not used:
   // module_body audio_row  - мелкий модуль в профиле
+  // '.audios_module .audio_row', - в группе в блоке аудио 3шт пересекается с ^ 
   // choose_row audio_row   - при выборе песни для прикрепления
 ];
 

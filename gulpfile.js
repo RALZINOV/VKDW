@@ -5,7 +5,6 @@ const zip = require('gulp-zip');
 const webpack = require('webpack');
 const rename = require('gulp-rename');
 const jeditor = require('gulp-json-editor');
-// const uglify = require('gulp-uglify');
 const webpackStream = require('webpack-stream');
 const cleanCSS = require('gulp-clean-css');
 const webpackConfig = require('./webpack.config.js');
@@ -40,7 +39,7 @@ gulp.task('cssmin', () => {
 });
 
 gulp.task('copy-assets', () => {
-  return gulp.src('src/img/*.*')
+  return gulp.src('src/img/**/*')
     .pipe(gulp.dest(`${buildFolder}/img`));
 });
 
