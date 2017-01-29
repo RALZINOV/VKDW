@@ -12,7 +12,12 @@
       "workers/bgWorker.js"
     ]
   },
-  "browser_action": {},
+  "browser_action": {
+    "default_icon": {
+      "32": "img/icons/32.png",
+      "40": "img/icons/40.png"
+    }
+  },
   "externally_connectable": {
     "matches": [
       "*://vk.com/*"

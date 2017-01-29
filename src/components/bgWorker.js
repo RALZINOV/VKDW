@@ -19,7 +19,7 @@ function handleDownloadMessage(request, sendResponse) {
   const path = request.albumName ? `${request.albumName}/` : '';
   const folderName = `VKDW_${currentDate}/${path}`;
 
-  chrome.downloads.setShelfEnabled(false);
+  //chrome.downloads.setShelfEnabled(false);
 
   chrome.downloads.download({
     url: request.rawSongUrl,
@@ -29,7 +29,7 @@ function handleDownloadMessage(request, sendResponse) {
 
     if (downloadId === undefined) {
       console.error(`Error: Cannot download. Status: ${chrome.runtime.lastError}`);
-        chrome.downloads.setShelfEnabled(true);
+        //chrome.downloads.setShelfEnabled(true);
 
     } else {
       console.info(`Start download ${downloadId}`);
@@ -57,8 +57,8 @@ chrome.runtime.onMessageExternal.addListener(
 
   });
 
-chrome.browserAction.setPopup({
-  popup: '../pages/popup.html',
-});
+// chrome.browserAction.setPopup({
+//   popup: '../pages/popup.html',
+// });
 
 console.log('Ready');

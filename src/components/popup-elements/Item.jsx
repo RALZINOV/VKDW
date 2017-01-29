@@ -4,15 +4,7 @@ import Button from './Button.jsx';
 class Item extends React.Component {
 
   render() {
-    const {
-      artist,
-      trackName,
-      status,
-      progress,
-      totalSize,
-      clearDownloads,
-      erase,
-    } = this.props.data;
+    const { data: { artist, trackName, status, progress, totalSize }, erase } = this.props;
 
     return (
       <div className="item" title="Status">

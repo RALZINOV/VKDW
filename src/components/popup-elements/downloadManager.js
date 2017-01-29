@@ -5,7 +5,7 @@ const ACTIVE_DOWNLOADS = [];
 
 function getExtensionDownloads() {
   return new Promise((resolve, reject) => {
-    chrome.downloads.search({}, (result) => {
+    chrome.downloads.search({}, (result, error) => {
 
       const items = result.filter((item) => {
         return item.byExtensionId === bgWorkerExtensionId;
@@ -14,7 +14,7 @@ function getExtensionDownloads() {
       if (items.length > 0) {
         resolve(items);
       } else {
-        reject();
+        reject(result, error);
       }
     });
   });
@@ -107,8 +107,8 @@ export default function downloadManager(event, setData) {
       }
 
     })
-    .catch(() => {
-      console.log('No items found');
+    .catch((e) => {
+      console.log('No items found', e);
       setData({
         data: [],
       });
@@ -118,18 +118,20 @@ export default function downloadManager(event, setData) {
 downloadManager.ACTIVE_DOWNLOADS = ACTIVE_DOWNLOADS;
 
 export function eraseItem(id, setData) {
-  const erase = new Promise((resolve) => {
-    chrome.downloads.erase({ id }, (result) => {
-      resolve(result);
+  const erase = () => {
+    return new Promise((resolve) => {
+      chrome.downloads.erase({ id }, (result) => {
+          resolve(result);
+        });
     });
-  });
+  };
 
-  erase(id)
-    .then((response) => {
-      if (response.indexOf(id) >= 0) {
-        downloadManager(null, setData);
-      }
-    });
+  erase()
+  .then((response) => {
+    if (response.indexOf(id) >= 0) {
+      downloadManager(null, setData);
+    }
+  });
 }
 
 export function openDownloads() {

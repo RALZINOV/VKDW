@@ -23,12 +23,13 @@ class DataProvider extends React.Component {
     clearExtensionDownloads(this.setState({ data: [] }));
   }
 
-  handleEraseItemData = (id) => {
+  handleEraseItemData = (id) => () => {
     eraseItem(id, this.handleData);
   }
 
   componentWillMount() {
     chrome.downloads.onChanged.addListener((event) => {
+      console.log('changed!');
       downloadManager(event, this.handleData);
     });
 
@@ -40,6 +41,7 @@ class DataProvider extends React.Component {
   }
 
   render() {
+    console.log(this)
     const childProps = {
       data: this.state.data,
       refreshList: this.refreshList,

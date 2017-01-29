@@ -4,12 +4,8 @@ import Button from './Button.jsx';
 
 class Page extends React.Component {
 
-  handleEraseItem = (id) => () => {
-    this.props.eraseItem(id);
-  }
-
   render() {
-    const { data, refreshList, openDownloads, clearDownloads } = this.props;
+    const { data, refreshList, openDownloads, clearDownloads, eraseItem } = this.props;
 
     return (
       <div className="app-wrap">
@@ -36,7 +32,7 @@ class Page extends React.Component {
                 <Item
                   data={itemData}
                   refreshList={refreshList}
-                  erase={this.handleEraseItem(itemData.id)}
+                  erase={eraseItem(itemData.id)}
                   key={`item_${index}`}
                 />
               );
